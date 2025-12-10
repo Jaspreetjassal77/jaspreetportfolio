@@ -2,2252 +2,1240 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Jaspreet Jassal | Nature Luxury Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Fonts (allowed) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <title>Jaspreet Singh | Space Portfolio</title>
 
   <style>
-    /* ---------- RESET ---------- */
+    /* ============ GLOBAL RESET ============ */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      font-family: "Poppins", sans-serif;
     }
 
     body {
-      font-family: "Poppins", system-ui, sans-serif;
-      background: #022130;
-      color: #f9fafb;
-      min-height: 100vh;
+      background: #000000;
+      color: #ffffff;
       overflow-x: hidden;
-      position: relative;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    :root {
-      --accent-neon: #22c55e;      /* green */
-      --accent-pink: #22d3ee;      /* blue / cyan */
-      --accent-purple: #0ea5e9;    /* sky blue */
-      --accent-gold: #a3e635;      /* lime-ish accent */
-      --border-subtle: rgba(148, 163, 184, 0.4);
-      --radius-2xl: 24px;
-      --shadow-strong: 0 25px 60px rgba(0, 0, 0, 0.9);
-      --transition-fast: 0.25s ease-out;
-    }
-
-    /* ---------- CARTOON LANDSCAPE BACKGROUND (ALL PAGES) ---------- */
-    .landscape {
+    /* ============ BACKGROUND STARS CANVAS ============ */
+    #stars {
       position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      overflow: hidden;
-      background: radial-gradient(circle at top, #0b2a3a 0, #020617 45%, #020617 100%);
-    }
-
-    /* glowing sky */
-    .sky-glow {
-      position: absolute;
-      top: -20%;
-      left: -10%;
-      width: 140%;
-      height: 70%;
-      background:
-        radial-gradient(circle at 20% 0, rgba(34, 197, 94, 0.5), transparent 60%),
-        radial-gradient(circle at 80% 10%, rgba(56, 189, 248, 0.6), transparent 65%);
-      filter: blur(18px);
-      opacity: 0.8;
-      animation: skyGlow 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes skyGlow {
-      0%   { transform: translate3d(-10px, 0, 0) scale(1);   opacity: 0.8; }
-      50%  { transform: translate3d(10px, 8px, 0) scale(1.05); opacity: 1; }
-      100% { transform: translate3d(-5px, 12px, 0) scale(1.03); opacity: 0.85; }
-    }
-
-    /* rainbow arc */
-    .rainbow {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: 8%;
-      top: 8%;
-      background: conic-gradient(
-        #f97316,
-        #facc15,
-        #22c55e,
-        #22d3ee,
-        #6366f1,
-        #a855f7,
-        #f97316
-      );
-      border-radius: 50%;
-      -webkit-mask: radial-gradient(farthest-side, transparent 57%, #000 58%);
-      mask: radial-gradient(farthest-side, transparent 57%, #000 58%);
-      opacity: 0.85;
-      filter: blur(0.4px);
-      animation: rainbowGlow 14s ease-in-out infinite alternate;
-    }
-
-    @keyframes rainbowGlow {
-      0%   { transform: translateY(0) scale(1);   opacity: 0.7; }
-      50%  { transform: translateY(6px) scale(1.03); opacity: 0.95; }
-      100% { transform: translateY(2px) scale(1.01); opacity: 0.8; }
-    }
-
-    /* hills */
-    .hill {
-      position: absolute;
-      bottom: 18%;
-      width: 60%;
-      height: 40%;
-      background: radial-gradient(circle at 50% 0, #22c55e 0, #14532d 65%, #052e16 100%);
-      border-radius: 50% 50% 0 0;
-      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.7);
-      animation: hillFloat 22s ease-in-out infinite alternate;
-    }
-
-    .hill.hill-left {
-      left: -10%;
-    }
-
-    .hill.hill-right {
-      right: -15%;
-      animation-delay: 4s;
-    }
-
-    @keyframes hillFloat {
-      0%   { transform: translateY(4px); }
-      50%  { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
-    }
-
-    /* sea */
-    .sea {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 28%;
-      background: linear-gradient(to top, #020617 0, #022c44 35%, #0369a1 100%);
-      overflow: hidden;
-    }
-
-    .wave {
-      position: absolute;
-      width: 200%;
-      height: 70%;
-      left: -50%;
-      bottom: -5%;
-      background: radial-gradient(circle at 50% 0, rgba(148, 241, 255, 0.45), transparent 56%);
-      opacity: 0.8;
-      animation: waveMove 18s linear infinite;
-    }
-
-    .wave.wave-2 {
-      opacity: 0.55;
-      animation-duration: 24s;
-      animation-direction: reverse;
-      transform: translateY(6px) scale(1.1);
-    }
-
-    @keyframes waveMove {
-      0%   { transform: translateX(0) translateY(0); }
-      50%  { transform: translateX(25%) translateY(4px); }
-      100% { transform: translateX(50%) translateY(0); }
-    }
-
-    /* cartoon trees */
-    .tree {
-      position: absolute;
-      bottom: 24%;
-      width: 26px;
-      height: 90px;
-      transform-origin: bottom center;
-      animation: treeSwing 5s ease-in-out infinite alternate;
-    }
-
-    .tree.tr-1 { left: 12%; animation-delay: 0.5s; }
-    .tree.tr-2 { left: 22%; animation-delay: 1.5s; }
-    .tree.tr-3 { right: 18%; animation-delay: 1s; }
-    .tree.tr-4 { right: 10%; animation-delay: 2s; }
-
-    .tree-trunk {
-      position: absolute;
-      bottom: 0;
-      left: 45%;
-      width: 6px;
-      height: 40px;
-      background: linear-gradient(#1c1917, #0f172a);
-      border-radius: 999px;
-    }
-
-    .tree-crown {
-      position: absolute;
-      bottom: 32px;
-      left: -8px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #bbf7d0, #16a34a 55%, #14532d 100%);
-      box-shadow: 0 0 18px rgba(34, 197, 94, 0.7);
-    }
-
-    @keyframes treeSwing {
-      0%   { transform: rotate(-2deg) translateY(0); }
-      50%  { transform: rotate(2deg) translateY(-2px); }
-      100% { transform: rotate(-1deg) translateY(0); }
-    }
-
-    /* slight noise overlay */
-    .noise-layer {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.0' numOctaves='3' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.11'/%3E%3C/svg%3E");
-      mix-blend-mode: soft-light;
-      z-index: -1;
-    }
-
-    /* ---------- SCROLLBAR ---------- */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #020617;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(180deg, #22c55e, #22d3ee);
-      border-radius: 999px;
-    }
-
-    /* ---------- NAVBAR ---------- */
-    header {
-      position: sticky;
       top: 0;
-      z-index: 30;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to bottom,
-        rgba(8, 47, 73, 0.97),
-        rgba(8, 47, 73, 0.78)
-      );
-      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
     }
 
-    .nav {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.8rem 1.5rem;
+    /* ============ SIDE NAVIGATION ============ */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 180px;
+
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      border-right: 1px solid rgba(255, 255, 255, 0.15);
+
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
+      padding-top: 40px;
+
+      z-index: 10;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.7);
-      box-shadow:
-        0 0 0 1px rgba(34, 197, 94, 0.8),
-        0 0 30px rgba(34, 197, 94, 0.9);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.7), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.7), transparent 60%),
-        #020617;
-      font-family: "Space Grotesk", system-ui, sans-serif;
+    .logo {
+      font-size: 20px;
       font-weight: 700;
-      font-size: 1.15rem;
-      color: #bbf7d0;
-    }
-
-    .brand-text-main {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.1rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .brand-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: #9ca3af;
+      color: #00eaff;
+      margin-bottom: 35px;
+      text-align: center;
+      letter-spacing: 1px;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 1.6rem;
-      font-size: 0.88rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
+      flex-direction: column;
+      gap: 22px;
     }
 
-    .nav-links a {
+    .nav-link {
+      color: #cccccc;
+      text-decoration: none;
+      font-size: 15px;
       position: relative;
-      padding-bottom: 0.25rem;
-      color: #e5e7eb;
+      padding-left: 10px;
+      transition: 0.3s;
     }
 
-    .nav-links a::after {
+    .nav-link::before {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-neon), var(--accent-pink));
-      transition: width var(--transition-fast);
+      top: 0;
+      width: 4px;
+      height: 0%;
+      background: #00eaff;
+      transition: 0.3s;
     }
 
-    .nav-links a:hover::after {
-      width: 100%;
+    .nav-link:hover {
+      color: #ffffff;
     }
 
-    .nav-cta {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid rgba(34, 197, 94, 0.85);
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 0.45rem;
-      background: radial-gradient(circle at 0 0, rgba(22, 163, 74, 0.35), transparent 60%);
-      cursor: pointer;
-      transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background var(--transition-fast);
-      box-shadow: 0 0 25px rgba(22, 163, 74, 0.5);
+    .nav-link:hover::before {
+      height: 100%;
     }
 
-    .nav-cta:hover {
-      transform: translateY(-1px) scale(1.02);
-      background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.35), transparent 60%);
-      box-shadow: 0 0 40px rgba(56, 189, 248, 0.7);
+    /* ============ MAIN CONTENT AREA ============ */
+    .main {
+      margin-left: 200px;
+      padding: 50px 40px 40px 40px;
     }
 
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 20px;
-      height: 2px;
-      border-radius: 999px;
-      background: rgba(249, 250, 251, 0.9);
-    }
-
-    /* ---------- LAYOUT ---------- */
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 1.8rem 1.5rem 3.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-      position: relative;
-    }
-
-    .section-home {
-      background:
-        radial-gradient(circle at top, rgba(15, 118, 110, 0.9), transparent 75%);
-      border-radius: 32px;
-      padding: 3.5rem 2.1rem 3rem;
-      margin-top: 1.5rem;
-      border: 1px solid rgba(45, 212, 191, 0.4);
-      box-shadow: 0 30px 70px rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-about {
-      background: radial-gradient(circle at top left, rgba(16, 185, 129, 0.35), transparent 70%),
-                  radial-gradient(circle at bottom right, rgba(248, 250, 252, 0.04), transparent 70%),
-                  rgba(15, 23, 42, 0.94);
-      border-radius: 28px;
-      padding: 3rem 2rem;
-      margin-top: 1rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-projects {
-      background: radial-gradient(circle at 10% 0, rgba(59, 130, 246, 0.25), transparent 70%),
-                  radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.7), transparent 70%),
-                  rgba(15, 23, 42, 0.98);
-      border-radius: 32px;
-      padding: 3rem 2rem;
-      margin-top: 1rem;
-      border: 1px solid rgba(34, 197, 94, 0.55);
-      box-shadow: 0 40px 90px rgba(0, 0, 0, 1);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-contact {
-      background: radial-gradient(circle at 50% 0, rgba(45, 212, 191, 0.2), transparent 70%),
-                  rgba(15, 23, 42, 0.95);
-      border-radius: 26px;
-      padding: 3rem 2rem;
-      margin-top: 1rem;
-      border: 1px solid rgba(34, 197, 94, 0.6);
-      backdrop-filter: blur(10px);
+    .section {
+      min-height: 90vh;
+      padding-top: 30px;
     }
 
     .section-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 2.1rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.6rem;
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00eaff;
+      letter-spacing: 1px;
     }
 
-    .section-chip {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      padding: 0.4rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.85));
-      color: #ccfbf1;
-    }
-
-    .section-sub {
-      max-width: 560px;
-      font-size: 0.94rem;
-      color: #e0f2fe;
-    }
-
-    .glass {
-      background: radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.93), rgba(15, 23, 42, 0.9));
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-strong);
-      padding: 1.7rem 1.7rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .glass::before {
-      content: "";
-      position: absolute;
-      inset: -20%;
-      background:
-        radial-gradient(circle at 0 0, rgba(45, 212, 191, 0.22), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.25), transparent 60%);
-      opacity: 0.9;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    .glass-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ---------- HERO (HOME) ---------- */
+    /* ============ HERO SECTION ============ */
     .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 2.8rem;
-      align-items: center;
-    }
-
-    .hero-overline {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: #a5f3fc;
       display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 0.85rem;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 90vh;
+      position: relative;
     }
 
-    .hero-overline::before {
-      content: "";
-      width: 48px;
-      height: 1px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent-neon), var(--accent-pink));
+    .hero-content {
+      max-width: 650px;
     }
 
     .hero-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.4rem, 3vw + 1.6rem, 3.4rem);
-      line-height: 1.1;
-      margin-bottom: 0.7rem;
-    }
-
-    .hero-title span.neon {
-      background: linear-gradient(120deg, var(--accent-neon), var(--accent-pink), var(--accent-gold));
+      font-size: 40px;
+      margin-bottom: 8px;
+      min-height: 50px;
+      background: linear-gradient(90deg, #ffffff, #00eaff);
       -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
     }
 
-    .hero-typing {
-      font-size: 1rem;
-      color: #e5e7eb;
-      margin-bottom: 1.1rem;
-      min-height: 1.3rem;
-    }
-
-    .hero-typing span.cursor {
-      display: inline-block;
-      width: 10px;
-      background: var(--accent-neon);
-      margin-left: 2px;
-      animation: blink 0.7s steps(1, end) infinite;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
+    .hero-subtitle {
+      font-size: 18px;
+      color: #cbd5f5;
+      margin-bottom: 12px;
+      min-height: 24px;
     }
 
     .hero-text {
-      font-size: 0.95rem;
-      color: #d1fae5;
-      max-width: 520px;
-      margin-bottom: 1.4rem;
+      font-size: 14px;
+      color: #d1d5db;
+      line-height: 1.7;
+      margin-bottom: 20px;
     }
 
-    .hero-tags {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-bottom: 1.6rem;
-    }
-
-    .hero-tag {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at 0 0, rgba(5, 150, 105, 0.7), transparent 60%);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
+      gap: 10px;
     }
 
     .btn-primary {
-      padding: 0.7rem 1.3rem;
-      border-radius: 999px;
+      padding: 10px 22px;
+      border-radius: 30px;
       border: none;
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
       cursor: pointer;
-      background: linear-gradient(120deg, var(--accent-neon), var(--accent-pink));
-      color: #022c22;
-      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.7);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition:
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        filter var(--transition-fast);
+      font-weight: 600;
+      background: linear-gradient(135deg, #00eaff, #0077ff);
+      color: #000000;
+      transition: 0.3s;
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px) scale(1.03);
-      filter: brightness(1.05);
-      box-shadow: 0 22px 55px rgba(56, 189, 248, 0.9);
+      transform: scale(1.05);
+      box-shadow: 0 0 18px #00eaff;
     }
 
-    .btn-ghost {
-      padding: 0.7rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      font-size: 0.85rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .btn-secondary {
+      padding: 10px 22px;
+      border-radius: 30px;
+      border: 1px solid #00eaff;
       cursor: pointer;
+      font-weight: 600;
       background: transparent;
-      color: #e5e7eb;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition:
-        background var(--transition-fast),
-        border-color var(--transition-fast),
-        transform var(--transition-fast);
+      color: #00eaff;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .btn-ghost:hover {
-      background: radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.3), transparent 65%);
-      border-color: rgba(248, 250, 252, 0.9);
-      transform: translateY(-1px);
+    .btn-secondary:hover {
+      background: #00eaff;
+      color: #000000;
+      box-shadow: 0 0 18px #00eaff;
     }
 
-    .hero-right {
-      display: flex;
-      justify-content: flex-end;
-    }
-
-    .hero-orb-card {
-      position: relative;
-      width: 100%;
-      max-width: 340px;
-      aspect-ratio: 4 / 5;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.5), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.55), transparent 55%),
-        #020617;
-      box-shadow: var(--shadow-strong);
-      overflow: hidden;
-      padding: 1.2rem;
-      animation: float-orb 18s ease-in-out infinite alternate;
-    }
-
-    @keyframes float-orb {
-      0% { transform: translateY(0) rotate(-1deg); }
-      50% { transform: translateY(-10px) rotate(1deg); }
-      100% { transform: translateY(-4px) rotate(-0.5deg); }
-    }
-
-    .hero-orb-inner {
-      height: 100%;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: radial-gradient(circle at 50% 15%, rgba(15, 23, 42, 0.1), rgba(15, 23, 42, 0.96));
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 1.2rem 1.1rem;
-      position: relative;
-    }
-
-    .hero-orb-inner::after {
-      content: "FOCUSED • DRIVEN";
+    /* ============ FLOATING ASTRONAUT & PLANET ============ */
+    .space-objects {
       position: absolute;
-      bottom: 10%;
-      right: -33%;
-      font-size: 0.68rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: rgba(148, 163, 184, 0.25);
-      transform: rotate(-90deg);
+      right: 40px;
+      bottom: 40px;
+      width: 220px;
+      height: 220px;
     }
 
-    .hero-avatar-circle {
+    .planet {
+      position: absolute;
+      bottom: 0;
+      right: 0;
       width: 140px;
       height: 140px;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.8);
-      margin: 0 auto 0.8rem;
-      box-shadow:
-        0 0 0 2px rgba(34, 197, 94, 0.7),
-        0 0 60px rgba(56, 189, 248, 0.9);
-      background:
-        radial-gradient(circle at 30% 10%, rgba(250, 250, 250, 0.4), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.55), transparent 60%),
-        #020617;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-weight: 600;
-      font-size: 1rem;
-      text-align: center;
-      padding: 1.2rem;
+
+      background: radial-gradient(circle at 30% 30%, #ffffff, #00eaff, #00111f);
+      border-radius: 50%;
+      box-shadow: 0 0 30px rgba(0, 234, 255, 0.7);
     }
 
-    .hero-avatar-circle span {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #e5e7eb;
+    .astronaut {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 70px;
+      height: 110px;
+
+      animation: float 3s ease-in-out infinite;
     }
 
-    .hero-orb-top {
-      text-align: center;
-    }
-
-    .hero-orb-name {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-
-    .hero-orb-role {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-top: 0.2rem;
-    }
-
-    .hero-orb-bottom {
-      display: grid;
-      gap: 0.6rem;
-      font-size: 0.78rem;
-      color: #e5e7eb;
-    }
-
-    .hero-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .hero-pill-small {
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.95);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .hero-status-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.4rem;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
-      margin-right: 0.25rem;
-    }
-
-    /* ---------- ABOUT ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 2.2rem;
-      margin-top: 2rem;
-    }
-
-    .about-text {
-      font-size: 0.94rem;
-      color: #e5e7eb;
-      line-height: 1.7;
-      margin-bottom: 1.1rem;
-    }
-
-    .about-pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 0.9rem;
-    }
-
-    .about-pill {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.96);
-    }
-
-    .about-box {
-      margin-top: 1.3rem;
-      border-radius: 18px;
-      border: 1px dashed rgba(148, 163, 184, 0.6);
-      padding: 1rem 1.1rem;
-      background: radial-gradient(circle at 0 0, rgba(45, 212, 191, 0.25), transparent 60%);
-      font-size: 0.85rem;
-    }
-
-    .about-right {
+    .astronaut-head {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background: #e5e7eb;
+      border: 3px solid #00eaff;
       position: relative;
-      border-radius: var(--radius-2xl);
-      padding: 1.4rem 1.4rem 1.5rem;
-      border: 1px solid var(--border-subtle);
-      background:
-        radial-gradient(circle at 0 0, rgba(16, 185, 129, 0.45), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.35), transparent 60%),
-        rgba(15, 23, 42, 0.96);
-      box-shadow: var(--shadow-strong);
       overflow: hidden;
     }
 
-    .about-right-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.25em;
-      color: #a7f3d0;
-      margin-bottom: 0.5rem;
+    .astronaut-head::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 4px;
+      width: 32px;
+      height: 20px;
+      border-radius: 12px;
+      background: #020617;
     }
 
-    .about-right-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.8rem;
-      color: #e0f2fe;
-    }
-
-    .about-timeline {
-      display: grid;
-      gap: 0.8rem;
-      font-size: 0.86rem;
-      color: #e5e7eb;
-    }
-
-    .about-timeline span {
-      display: block;
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #bae6fd;
-      margin-bottom: 0.1rem;
-    }
-
-    /* ---------- PROJECTS ---------- */
-    #projects {
-      scroll-margin-top: 80px;
-    }
-
-    .projects-wrap {
-      margin-top: 2.3rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
-      gap: 2rem;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 1rem;
-      perspective: 900px;
-    }
-
-    .project-card {
+    .astronaut-body {
+      width: 45px;
+      height: 50px;
+      margin: 6px auto 0;
+      border-radius: 10px;
+      background: #e5e7eb;
+      border: 2px solid #00eaff;
       position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.25), transparent 60%),
-        #020617;
-      cursor: pointer;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
-      transform-origin: center;
-      transition:
-        box-shadow 0.25s ease-out,
-        border-color 0.25s ease-out;
     }
 
-    .tilt-card {
-      will-change: transform;
-      transition:
-        transform 0.18s ease-out,
-        box-shadow 0.25s ease-out,
-        border-color 0.25s ease-out;
+    .astronaut-body::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 24px;
+      height: 16px;
+      border-radius: 4px;
+      background: #020617;
     }
 
-    .project-card.active {
-      border-color: var(--accent-gold);
-      box-shadow: 0 24px 60px rgba(132, 204, 22, 0.9);
+    .astronaut-leg {
+      position: absolute;
+      bottom: -12px;
+      width: 12px;
+      height: 20px;
+      border-radius: 4px;
+      background: #e5e7eb;
     }
 
-    .project-inner {
-      position: relative;
-      z-index: 1;
-      padding: 1rem 1.1rem 1.05rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
+    .leg-left {
+      left: 8px;
     }
 
-    .project-tag {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #e5e7eb;
+    .leg-right {
+      right: 8px;
     }
 
-    .project-title {
-      font-size: 1rem;
-      font-weight: 600;
+    .astronaut-arm {
+      position: absolute;
+      top: 14px;
+      width: 12px;
+      height: 26px;
+      border-radius: 6px;
+      background: #e5e7eb;
     }
 
-    .project-meta {
-      font-size: 0.8rem;
-      color: #e5e7eb;
+    .arm-left {
+      left: -8px;
+      transform: rotate(-20deg);
     }
 
-    .project-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 0.35rem;
-      font-size: 0.78rem;
+    .arm-right {
+      right: -8px;
+      transform: rotate(20deg);
     }
 
-    .project-chip {
-      padding: 0.25rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(15, 23, 42, 0.95);
-    }
-
-    .project-play {
-      font-size: 0.84rem;
-      opacity: 0.9;
-    }
-
-    .project-major {
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.3), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(34, 211, 238, 0.3), transparent 60%),
-        #020617;
-    }
-
-    .project-major .project-tag {
-      color: #bbf7d0;
-    }
-
-    .project-live {
-      border-radius: var(--radius-2xl);
-      border: 1px solid var(--border-subtle);
-      background:
-        radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.96));
-      box-shadow: var(--shadow-strong);
-      padding: 1.35rem 1.35rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      overflow: hidden;
-    }
-
-    .project-live-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.84rem;
-      color: #e5e7eb;
-    }
-
-    .project-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .project-badge {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 1);
-    }
-
-    .project-panels {
-      margin-top: 0.9rem;
-      border-radius: 18px;
-      border: 1px solid rgba(15, 23, 42, 0.96);
-      background: rgba(15, 23, 42, 0.96);
-      overflow: hidden;
-      flex: 1;
-    }
-
-    .project-panel {
-      display: none;
-      padding: 1.1rem 1.1rem 1.3rem;
-      animation: panel-in 0.35s ease-out;
-    }
-
-    .project-panel.active {
-      display: block;
-    }
-
-    @keyframes panel-in {
+    @keyframes float {
       0% {
-        opacity: 0;
-        transform: translateY(10px) scale(0.98);
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-10px);
       }
       100% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0px);
       }
     }
 
-    .mini-title {
-      font-size: 1rem;
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .mini-desc {
-      font-size: 0.8rem;
-      color: #9ca3af;
-      margin-bottom: 0.9rem;
-    }
-
-    /* ---------- TIC TAC TOE ---------- */
-    .ttt-board {
-      display: grid;
-      grid-template-columns: repeat(3, 70px);
-      grid-template-rows: repeat(3, 70px);
-      gap: 0.4rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .ttt-cell {
-      width: 70px;
-      height: 70px;
+    /* ============ ABOUT SECTION ============ */
+    .about-box {
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
-      border: 1px solid rgba(148, 163, 184, 0.8);
-      display: flex;
-      align-items: center;
+      padding: 20px;
+      line-height: 1.7;
+      color: #d1d5db;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* ============ SKILLS SECTION ============ */
+
+.upgraded-skill {
+  background: rgba(0, 10, 30, 0.8);
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  padding: 25px 18px;
+  border-radius: 16px;
+  text-align: center;
+  color: #e5e7eb;
+  box-shadow: inset 0 0 10px rgba(0, 234, 255, 0.2),
+              0 0 20px rgba(0, 234, 255, 0.1);
+  transition: 0.4s ease;
+  transform-style: preserve-3d;
+}
+
+.upgraded-skill:hover {
+  transform: translateY(-8px) rotateX(8deg);
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.6),
+              inset 0 0 10px rgba(0, 234, 255, 0.3);
+  background: rgba(0, 20, 40, 0.9);
+}
+
+.upgraded-skill .skill-icon {
+  font-size: 36px;
+  color: #00eaff;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+.upgraded-skill h4 {
+  font-size: 17px;
+  color: #00eaff;
+  margin-bottom: 8px;
+}
+
+.upgraded-skill p {
+  font-size: 13px;
+  color: #cbd5f5;
+  line-height: 1.6;
+}
+
+    /* ============ PROJECT SECTION ============ */
+
+.projects-upgraded {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.project-card-up {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid rgba(0, 234, 255, 0.25);
+  color: #e5e7eb;
+  box-shadow: inset 0 0 15px rgba(0, 234, 255, 0.15),
+              0 0 25px rgba(0, 234, 255, 0.08);
+  transition: 0.4s ease;
+  backdrop-filter: blur(5px);
+}
+
+.project-card-up:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.5);
+}
+
+.project-card-up h3 {
+  color: #00eaff;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.project-card-up p {
+  color: #cbd5f5;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.project-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00eaff, #0077ff);
+  color: #000;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+}
+
+.project-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.8);
+}
+
+/* subtle glowing animation overlay */
+.project-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(0, 234, 255, 0.2),
+    rgba(255, 255, 255, 0.1),
+    rgba(0, 234, 255, 0.2)
+  );
+  animation: rotateGlow 8s linear infinite;
+  opacity: 0;
+  transition: 0.3s;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.project-card-up:hover .project-glow {
+  opacity: 0.3;
+}
+
+@keyframes rotateGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+ /* ============ CONTACT SECTION ============ */
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-info {
+  flex: 1 1 320px;
+  color: #cbd5f5;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: inset 0 0 15px rgba(0, 234, 255, 0.1);
+  backdrop-filter: blur(8px);
+  transition: 0.3s ease;
+}
+
+.contact-info:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.3);
+}
+
+.contact-info h3 {
+  color: #00eaff;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.contact-info p {
+  line-height: 1.7;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.contact-details .detail span {
+  color: #00eaff;
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.contact-form-up {
+  flex: 1 1 340px;
+  background: rgba(0, 10, 30, 0.8);
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: inset 0 0 20px rgba(0, 234, 255, 0.15),
+              0 0 20px rgba(0, 234, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.contact-form-up:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 30px rgba(0, 234, 255, 0.4);
+}
+
+.contact-form-up input,
+.contact-form-up textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 13px;
+}
+
+.contact-form-up button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #00eaff, #0077ff);
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form-up button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.8);
+}
+
+.thank-text {
+  text-align: center;
+  color: #22c55e;
+  font-size: 13px;
+  margin-top: 8px;
+  display: none;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+    /* ============ MODALS (Clock, ATM, Calculator) ============ */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
-      font-size: 1.8rem;
-      cursor: pointer;
-      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), transparent 60%);
-      transition:
-        transform 0.18s ease-out,
-        box-shadow 0.18s ease-out,
-        border-color 0.18s ease-out;
+      align-items: center;
+      z-index: 20;
     }
 
-    .ttt-cell:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-gold);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    .modal-box {
+      width: 280px;
+      background: #00111f;
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid rgba(0, 234, 255, 0.4);
+      color: #ffffff;
     }
 
-    .ttt-status {
-      font-size: 0.86rem;
-      margin-bottom: 0.6rem;
-      color: #e5e7eb;
-    }
-
-    .mini-btn {
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: transparent;
-      color: #e5e7eb;
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition:
-        background var(--transition-fast),
-        transform var(--transition-fast),
-        border-color var(--transition-fast);
-    }
-
-    .mini-btn:hover {
-      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), transparent 60%);
-      border-color: var(--accent-neon);
-      transform: translateY(-1px);
-    }
-
-    /* ---------- IMAGE SLIDER ---------- */
-    .slider-wrap {
+    .modal-header {
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
 
-    .slider-viewport {
-      position: relative;
-      height: 180px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border-subtle);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 1rem 1.1rem;
-      opacity: 0;
-      transform: scale(1.04);
-      transition: opacity 0.45s ease-out, transform 0.45s ease-out;
-    }
-
-    .slide.active {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .slide-1 {
-      background: radial-gradient(circle at 0 0, rgba(22, 163, 74, 0.5), transparent 55%),
-                  linear-gradient(135deg, #022c22, #0f766e);
-    }
-
-    .slide-2 {
-      background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.5), transparent 55%),
-                  linear-gradient(135deg, #020617, #0f766e);
-    }
-
-    .slide-3 {
-      background: radial-gradient(circle at 0 100%, rgba(74, 222, 128, 0.6), transparent 55%),
-                  linear-gradient(135deg, #020617, #16a34a);
-    }
-
-    .slide-title {
-      font-size: 1rem;
+    .modal-title {
+      font-size: 16px;
       font-weight: 600;
     }
 
-    .slide-caption {
-      font-size: 0.8rem;
-      color: #e5e7eb;
-    }
-
-    .slider-controls {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    .slider-buttons {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .slider-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.98);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .modal-close {
       cursor: pointer;
-      font-size: 0.8rem;
-      transition:
-        transform var(--transition-fast),
-        background var(--transition-fast),
-        border-color var(--transition-fast);
+      font-size: 20px;
+      color: #00eaff;
     }
 
-    .slider-btn:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent-gold);
-      background: radial-gradient(circle at 0 0, rgba(45, 212, 191, 0.3), transparent 60%);
+    /* Clock display */
+    #clockDisplay {
+      text-align: center;
+      font-size: 30px;
+      color: #00eaff;
+      padding: 10px;
+      border-radius: 10px;
+      background: #000000;
     }
 
-    /* ---------- CALCULATOR ---------- */
-    .calc-shell {
-      max-width: 260px;
-      border-radius: 22px;
-      border: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.25), transparent 60%),
-                  rgba(15, 23, 42, 0.98);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.95);
-      padding: 0.9rem;
+    /* ATM */
+    #atmScreen {
+      background: #000000;
+      color: #00eaff;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      white-space: pre-line;
+      font-size: 13px;
     }
 
-    .calc-display {
-      height: 52px;
-      border-radius: 12px;
-      padding: 0.55rem 0.8rem;
-      margin-bottom: 0.7rem;
-      background: rgba(15, 23, 42, 0.98);
-      border: 1px solid rgba(148, 163, 184, 0.8);
+    .atm-buttons {
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      font-size: 1.25rem;
-      word-break: break-all;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .atm-button {
+      flex: 1 1 45%;
+      padding: 8px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00eaff, #0077ff);
+      color: #000000;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* Calculator */
+    #calcDisplay {
+      background: #000000;
+      color: #00eaff;
+      padding: 8px 10px;
+      border-radius: 10px;
+      text-align: right;
+      margin-bottom: 10px;
+      font-size: 18px;
     }
 
     .calc-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0.4rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
     }
 
-    .calc-btn {
-      height: 40px;
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.96);
-      font-size: 0.9rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition:
-        background var(--transition-fast),
-        transform var(--transition-fast),
-        box-shadow var(--transition-fast),
-        border-color var(--transition-fast);
-    }
-
-    .calc-btn.operator {
-      border-color: rgba(34, 197, 94, 0.9);
-    }
-
-    .calc-btn.equals {
-      grid-column: span 2;
-      background: linear-gradient(120deg, var(--accent-neon), var(--accent-pink));
-      color: #022c22;
+    .calc-button {
+      border: none;
+      border-radius: 8px;
+      padding: 8px;
+      background: #002233;
+      color: #ffffff;
       font-weight: 600;
-      box-shadow: 0 12px 30px rgba(22, 163, 74, 0.9);
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
-    .calc-btn.zero {
-      grid-column: span 2;
+    .calc-button:hover {
+      background: #00eaff;
+      color: #000000;
     }
 
-    .calc-btn:hover {
-      transform: translateY(-1px);
-      border-color: var(--accent-neon);
-      background: radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.28), transparent 60%);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9);
-    }
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 800px) {
+      .sidebar {
+        width: 150px;
+      }
 
-    /* ---------- DIGITAL CLOCK ---------- */
-    .clock-display {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 2.2rem;
-      letter-spacing: 0.12em;
-      text-align: center;
-      padding: 1rem 1.2rem;
-      border-radius: 20px;
-      border: 1px solid var(--border-subtle);
-      background:
-        radial-gradient(circle at 0 0, rgba(34, 197, 94, 0.28), transparent 60%),
-        radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.28), transparent 60%),
-        rgba(15, 23, 42, 0.98);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.95);
-      margin-bottom: 0.7rem;
-    }
+      .main {
+        margin-left: 160px;
+        padding: 40px 20px;
+      }
 
-    .clock-note {
-      font-size: 0.8rem;
-      color: #9ca3af;
-    }
-
-    /* ---------- CONTACT ---------- */
-    .contact-grid {
-      margin-top: 2.3rem;
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.05fr);
-      gap: 2rem;
-    }
-
-    .contact-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: #9ca3af;
-      margin-bottom: 0.3rem;
-    }
-
-    .contact-email {
-      font-size: 1.15rem;
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      margin-bottom: 0.7rem;
-      color: #e5e7eb;
-    }
-
-    .contact-note {
-      font-size: 0.9rem;
-      color: #e0f2fe;
-    }
-
-    .contact-card {
-      border-radius: var(--radius-2xl);
-      border: 1px solid rgba(34, 197, 94, 0.75);
-      padding: 1.7rem 1.7rem;
-      background: radial-gradient(circle at 50% 0, rgba(45, 212, 191, 0.16), transparent 70%),
-                  rgba(15, 23, 42, 0.97);
-      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.9);
-      animation: borderPulse 3s ease-in-out infinite;
-    }
-
-    @keyframes borderPulse {
-      0%, 100% { border-color: rgba(34, 197, 94, 0.4); }
-      50%      { border-color: rgba(34, 197, 94, 0.9); }
-    }
-
-    form {
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      font-size: 0.85rem;
-    }
-
-    .form-group label {
-      color: #e5e7eb;
-    }
-
-    .input,
-    .textarea {
-      border-radius: 14px;
-      border: 1px solid var(--border-subtle);
-      padding: 0.55rem 0.75rem;
-      background: rgba(15, 23, 42, 0.96);
-      color: #e5e7eb;
-      font-size: 0.9rem;
-      outline: none;
-      transition:
-        border-color var(--transition-fast),
-        box-shadow var(--transition-fast),
-        background var(--transition-fast);
-    }
-
-    .textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .input:focus,
-    .textarea:focus {
-      border-color: var(--accent-neon);
-      background: rgba(15, 23, 42, 1);
-      box-shadow: 0 0 0 1px rgba(34, 197, 94, 0.9);
-    }
-
-    .form-helper {
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      border-top: 1px solid rgba(148, 163, 184, 0.4);
-      padding: 1.2rem 1.5rem 1.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #9ca3af;
-      background: radial-gradient(circle at 50% 0, rgba(34, 197, 94, 0.18), transparent 60%);
-      margin-top: 2rem;
-    }
-
-    footer span.accent {
-      color: var(--accent-neon);
-    }
-
-    /* ---------- SCROLL REVEAL ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 960px) {
       .hero {
-        grid-template-columns: minmax(0, 1fr);
+        min-height: 80vh;
       }
 
-      .hero-right {
-        order: -1;
-        justify-content: center;
-      }
-
-      .about-grid,
-      .projects-wrap,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      main {
-        padding-inline: 1.25rem;
-      }
-
-      .section-home,
-      .section-about,
-      .section-projects,
-      .section-contact {
-        padding-inline: 1.4rem;
+      .space-objects {
+        display: none;
       }
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 600px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 14px;
+      }
+
       .nav-links {
-        position: absolute;
-        top: 62px;
-        right: 1.4rem;
-        flex-direction: column;
-        align-items: flex-end;
-        padding: 0.8rem 1rem;
-        border-radius: 18px;
-        border: 1px solid rgba(148, 163, 184, 0.5);
-        background: rgba(15, 23, 42, 0.98);
-        box-shadow: var(--shadow-strong);
+        flex-direction: row;
+        gap: 10px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 80px 16px 30px 16px;
+      }
+
+      .section {
+        min-height: auto;
+      }
+
+      .space-objects {
         display: none;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .ttt-board {
-        grid-template-columns: repeat(3, 60px);
-        grid-template-rows: repeat(3, 60px);
-      }
-
-      .ttt-cell {
-        width: 60px;
-        height: 60px;
-      }
-
-      .clock-display {
-        font-size: 1.8rem;
       }
     }
+    /* ===========================
+   NAV UPGRADE: GLOW, ACTIVE & TOP BUTTON
+   =========================== */
+
+/* 1️⃣ Logo Glow Pulse */
+.logo {
+  position: relative;
+  font-size: 22px;
+  font-weight: 700;
+  color: #00eaff;
+  text-align: center;
+  z-index: 2;
+  letter-spacing: 1px;
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -20px;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 30%, rgba(0,234,255,0.35), transparent 70%);
+  border-radius: 50%;
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 0.9; }
+  100% { transform: scale(1); opacity: 0.4; }
+}
+
+/* 2️⃣ Active Link Highlight */
+.nav-link.active {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+}
+
+.nav-link.active::before {
+  height: 100%;
+  background: #00eaff;
+}
+
+/* 3️⃣ Back To Top Button */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg, #00eaff, #0077ff);
+  border: none;
+  border-radius: 50%;
+  color: #000;
+  font-size: 20px;
+  padding: 10px 14px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 20px rgba(0,234,255,0.6);
+  transition: 0.3s;
+  z-index: 99;
+}
+
+#backToTop:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(0,234,255,0.9);
+}
+
   </style>
 </head>
 <body>
-  <!-- Nature animated background for ALL pages -->
-  <div class="landscape">
-    <div class="sky-glow"></div>
-    <div class="rainbow"></div>
-    <div class="hill hill-left"></div>
-    <div class="hill hill-right"></div>
+  <!-- Moving stars background -->
+  <canvas id="stars"></canvas>
 
-    <div class="tree tr-1">
-      <div class="tree-trunk"></div>
-      <div class="tree-crown"></div>
-    </div>
-    <div class="tree tr-2">
-      <div class="tree-trunk"></div>
-      <div class="tree-crown"></div>
-    </div>
-    <div class="tree tr-3">
-      <div class="tree-trunk"></div>
-      <div class="tree-crown"></div>
-    </div>
-    <div class="tree tr-4">
-      <div class="tree-trunk"></div>
-      <div class="tree-crown"></div>
+  <!-- Side navigation -->
+ <aside class="sidebar">
+  <div class="logo">Jaspreet<br>Singh</div>
+  <nav class="nav-links">
+    <a href="#home" class="nav-link">🏠 Home</a>
+    <a href="#about" class="nav-link">👨‍🚀 About</a>
+    <a href="#skills" class="nav-link">⚙️ Skills</a>
+    <a href="#projects" class="nav-link">💻 Projects</a>
+    <a href="#contact" class="nav-link">📩 Contact</a>
+  </nav>
+</aside>
+
+
+  <!-- Main content -->
+  <main class="main">
+    <!-- HERO SECTION -->
+    <section id="home" class="section hero">
+      <div class="hero-content">
+        <h1 id="heroTitle" class="hero-title"></h1>
+        <h3 id="heroSubtitle" class="hero-subtitle"></h3>
+        <p class="hero-text">
+          I’m Jaspreet Singh, an IT student at HIIT Ambala. I love building small projects like clocks,
+          calculators and simple apps using HTML, CSS and JavaScript to improve my logic and design skills.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+            View Projects
+
+        </div>
+      </div>
+
+      <div class="space-objects">
+        <div class="planet"></div>
+        <div class="astronaut">
+          <div class="astronaut-head"></div>
+          <div class="astronaut-body">
+            <div class="astronaut-arm arm-left"></div>
+            <div class="astronaut-arm arm-right"></div>
+            <div class="astronaut-leg leg-left"></div>
+            <div class="astronaut-leg leg-right"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+  <section id="about" class="section">
+  <h2 class="section-title">About Me</h2>
+
+  <div class="about-box">
+    <p>
+      👋 Hi! I'm <span style="color:#00eaff;font-weight:600;">Jaspreet Singh</span>, 
+      a passionate <strong>Information Technology student</strong> from 
+      <span style="color:#38bdf8;">HIIT Ambala</span>.
+    </p>
+    <br>
+    <p>
+      I enjoy learning by creating — from simple web pages to functional mini-projects 
+      like calculators, clocks, and creative interactive websites.
+      My goal is to combine clean design with solid logic using 
+      <strong>HTML, CSS & JavaScript</strong>.
+    </p>
+    <br>
+
+    <!-- Info Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px;margin-top:20px;">
+      <div style="background:rgba(255,255,255,0.05);padding:18px;border-radius:12px;
+                  border:1px solid rgba(0,234,255,0.3);transition:0.3s;">
+        <h4 style="color:#00eaff;margin-bottom:6px;">🎓 Education</h4>
+        <p>Studying Information Technology at HIIT Ambala</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.05);padding:18px;border-radius:12px;
+                  border:1px solid rgba(0,234,255,0.3);transition:0.3s;">
+        <h4 style="color:#00eaff;margin-bottom:6px;">💡 Interests</h4>
+        <p>Web Designing, UI Effects, Creative Coding, and Modern Animations</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,0.05);padding:18px;border-radius:12px;
+                  border:1px solid rgba(0,234,255,0.3);transition:0.3s;">
+        <h4 style="color:#00eaff;margin-bottom:6px;">⚙️ Skills Focus</h4>
+        <p>Front-end Development, Responsive Design, JavaScript Interactivity</p>
+      </div>
     </div>
 
-    <div class="sea">
-      <div class="wave wave-1"></div>
-      <div class="wave wave-2"></div>
+    <br>
+    <p>
+      🌟 <strong>My Mission:</strong> To grow as a developer who builds visually stunning and 
+      high-performing websites that tell stories through design and motion.
+    </p>
+  </div>
+</section>
+
+
+    <!-- SKILLS SECTION -->
+   <section id="skills" class="section">
+  <h2 class="section-title">My Skills</h2>
+
+  <div class="skills-intro" style="text-align:center;max-width:700px;margin:0 auto 30px auto;color:#cbd5f5;line-height:1.8;">
+    I’ve been exploring web technologies and learning how design and logic come together.  
+    My focus is on building **responsive, fast, and interactive** web pages using the latest front-end tools.  
+    Here are the technologies and tools I work with:
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card upgraded-skill">
+      <div class="skill-icon">🌐</div>
+      <h4>HTML</h4>
+      <p>Building clean & semantic structures for web pages.</p>
+    </div>
+
+    <div class="skill-card upgraded-skill">
+      <div class="skill-icon">🎨</div>
+      <h4>CSS</h4>
+      <p>Styling with gradients, flexbox & animations for modern layouts.</p>
+    </div>
+
+    <div class="skill-card upgraded-skill">
+      <div class="skill-icon">⚡</div>
+      <h4>JavaScript</h4>
+      <p>Adding logic & interactivity with pure JS and DOM manipulation.</p>
+    </div>
+
+    <div class="skill-card upgraded-skill">
+      <div class="skill-icon">📱</div>
+      <h4>Responsive Design</h4>
+      <p>Optimizing for mobile-first, adaptive layouts.</p>
+    </div>
+  </section>
+ <!-- PROJECTS SECTION -->
+   <section id="projects" class="section">
+  <h2 class="section-title">My Projects</h2>
+
+  <div style="text-align:center;max-width:700px;margin:0 auto 30px auto;color:#cbd5f5;line-height:1.8;">
+    I believe in learning by building.  
+    Each of these projects helped me understand new logic and UI techniques.  
+    Click on any project below to explore its functionality.
+  </div>
+
+  <div class="projects-upgraded">
+    <div class="project-card-up">
+      <div class="project-glow"></div>
+      <h3>🕒 Digital Clock</h3>
+      <p>A real-time digital clock built using JavaScript's <code>Date()</code> object.</p>
+      <button class="project-btn" onclick="openModal('clockModal')">Open Clock</button>
+    </div>
+
+    <div class="project-card-up">
+      <div class="project-glow"></div>
+      <h3>💳 ATM Simulator</h3>
+      <p>A mini banking simulation that performs deposit, withdraw & balance check.</p>
+      <button class="project-btn" onclick="openModal('atmModal')">Open ATM</button>
+    </div>
+
+    <div class="project-card-up">
+      <div class="project-glow"></div>
+      <h3>🧮 Calculator</h3>
+      <p>A lightweight calculator to perform all basic math operations.</p>
+      <button class="project-btn" onclick="openModal('calcModal')">Open Calculator</button>
+    </div>
+  </div>
+</section>
+
+    <!-- CONTACT SECTION -->
+   <section id="contact" class="section">
+  <h2 class="section-title">Contact Me</h2>
+
+  <div class="contact-container">
+    <!-- Left side info -->
+    <div class="contact-info">
+      <h3>Let’s Connect 🌟</h3>
+      <p>
+        I’m always excited to work on creative projects and explore new ideas.  
+        If you’d like to collaborate, discuss your project, or just say hi — reach out below!
+      </p>
+
+      <div class="contact-details">
+        <div class="detail">
+          <span>📍</span> Ambala, Haryana, India
+        </div>
+        <div class="detail">
+          <span>📧</span> jaspreetjassal77.com
+        </div>
+        <div class="detail">
+          <span>📱</span> +91 82228 XXXXX
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side form -->
+    <form class="contact-form-up" id="contactForm">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="4" required></textarea>
+      <button type="submit">Send Message 🚀</button>
+      <div class="thank-text" id="thankText">✅ Message sent successfully!</div>
+    </form>
+  </div>
+</section>
+<!-- ATM MODAL -->
+  <div id="atmModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">ATM Simulator</span>
+        <span class="modal-close" onclick="closeModal('atmModal')">×</span>
+      </div>
+      <div id="atmScreen">Welcome to ATM
+Balance: ₹1000</div>
+      <div class="atm-buttons">
+        <button class="atm-button" onclick="deposit()">Deposit ₹100</button>
+        <button class="atm-button" onclick="withdraw()">Withdraw ₹100</button>
+        <button class="atm-button" onclick="checkBalance()">Check</button>
+        <button class="atm-button" onclick="resetATM()">Reset</button>
+      </div>
     </div>
   </div>
 
-  <div class="noise-layer"></div>
-
-  <!-- ---------- NAVBAR ---------- -->
-  <header>
-    <nav class="nav">
-      <div class="brand">
-        <div class="brand-logo">J</div>
-        <div>
-          <div class="brand-text-main">Jaspreet Jassal</div>
-          <div class="brand-sub">Portfolio • Nature Edition</div>
-        </div>
+  <!-- CALCULATOR MODAL -->
+  <div id="calcModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Calculator</span>
+        <span class="modal-close" onclick="closeModal('calcModal')">×</span>
       </div>
+      <div id="calcDisplay">0</div>
+      <div class="calc-grid">
+        <button class="calc-button" onclick="clearCalc()">C</button>
+        <button class="calc-button" onclick="delChar()">⌫</button>
+        <button class="calc-button" onclick="appendCalc('%')">%</button>
+        <button class="calc-button" onclick="appendCalc('/')">÷</button>
 
-      <div class="nav-links" id="navLinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <button class="calc-button" onclick="appendCalc('7')">7</button>
+        <button class="calc-button" onclick="appendCalc('8')">8</button>
+        <button class="calc-button" onclick="appendCalc('9')">9</button>
+        <button class="calc-button" onclick="appendCalc('*')">×</button>
+
+        <button class="calc-button" onclick="appendCalc('4')">4</button>
+        <button class="calc-button" onclick="appendCalc('5')">5</button>
+        <button class="calc-button" onclick="appendCalc('6')">6</button>
+        <button class="calc-button" onclick="appendCalc('-')">−</button>
+
+        <button class="calc-button" onclick="appendCalc('1')">1</button>
+        <button class="calc-button" onclick="appendCalc('2')">2</button>
+        <button class="calc-button" onclick="appendCalc('3')">3</button>
+        <button class="calc-button" onclick="appendCalc('+')">+</button>
+
+        <button class="calc-button" onclick="appendCalc('0')">0</button>
+        <button class="calc-button" onclick="appendCalc('.')">.</button>
+        <button class="calc-button" onclick="calculateCalc()">=</button>
       </div>
-
-      <button class="nav-cta" onclick="scrollToSection('projects')">
-        Projects
-        <span>↓</span>
-      </button>
-
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <!-- ---------- HOME ---------- -->
-    <section id="home" class="section-home reveal">
-      <div class="hero">
-        <div>
-          <div class="hero-overline">Nature Luxury Exam Portfolio • HTML • CSS • JavaScript</div>
-          <h1 class="hero-title">
-            Hi, I'm <span class="neon">Jaspreet Jassal</span>
-          </h1>
-          <div class="hero-typing">
-            <span id="typeText"></span><span class="cursor"></span>
-          </div>
-          <p class="hero-text">
-            I treat every assignment like a real-world project. This digital portfolio blends clean code, a unique
-            nature-inspired design, and interactive mini projects – all built from scratch for my exam using pure HTML,
-            CSS, and JavaScript.
-          </p>
-
-          <div class="hero-tags">
-            <div class="hero-tag">Focused Student</div>
-            <div class="hero-tag">Front-end Learner</div>
-            <div class="hero-tag">Growth & Innovation</div>
-          </div>
-
-          <div class="hero-actions">
-            <button class="btn-primary" onclick="scrollToSection('projects')">
-              Explore Mini Projects ▸
-            </button>
-            <button class="btn-ghost" onclick="scrollToSection('about')">
-              My Study Mindset
-            </button>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="hero-orb-card">
-            <div class="hero-orb-inner">
-              <div class="hero-orb-top">
-                <div class="hero-avatar-circle">
-                  <span>Code • Design • Discipline</span>
-                </div>
-                <div class="hero-orb-name">Jaspreet Jassal</div>
-                <div class="hero-orb-role">Student • Front-end Explorer</div>
-              </div>
-              <div class="hero-orb-bottom">
-                <div class="hero-status-row">
-                  <div>
-                    <span class="status-dot"></span> Exam Portfolio:
-                    <strong>Ready</strong>
-                  </div>
-                  <div class="hero-pill-small">Live Demo</div>
-                </div>
-                <div>
-                  I combine logical thinking with a premium visual style – aiming to build interfaces that feel smooth,
-                  modern, and intentional.
-                </div>
-                <div class="hero-pill-row">
-                  <div class="hero-pill-small">HTML • CSS • JS</div>
-                  <div class="hero-pill-small">Mini Projects</div>
-                  <div class="hero-pill-small">Clean UI</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- ABOUT ---------- -->
-    <section id="about" class="section-about reveal">
-      <h2 class="section-title">
-        About Me
-        <span class="section-chip">Studies, skills & mindset</span>
-      </h2>
-      <p class="section-sub">
-        A calm, focused section designed to reflect how I think and learn – serious about both academics and projects.
-      </p>
-
-      <div class="about-grid">
-        <div class="glass">
-          <div class="glass-inner">
-            <p class="about-text">
-              I am a dedicated student who genuinely enjoys understanding how things work – not just memorising theory,
-              but converting it into working projects. Whenever I learn a new concept, I try to turn it into something
-              visual and interactive so that it becomes easier to remember and explain.
-            </p>
-            <p class="about-text">
-              I am equally serious about my studies and my work. For me, good marks and good projects go together.
-              That’s why I focus on writing neat code, using proper structure, and giving my projects a premium,
-              polished look — even when it’s “just” an exam submission.
-            </p>
-
-            <div class="about-pill-row">
-              <div class="about-pill">Strong fundamentals in HTML, CSS, JavaScript</div>
-              <div class="about-pill">Passionate about UI & smooth animations</div>
-              <div class="about-pill">Enjoys problem solving & debugging</div>
-              <div class="about-pill">Always aiming to improve quality</div>
-            </div>
-
-            <div class="about-box">
-              <strong>My goals for growth & innovation:</strong>
-              <ul style="margin-left:1rem; margin-top:0.35rem;">
-                <li>• Keep mastering core web concepts and logic.</li>
-                <li>• Build more interactive and useful projects beyond just demo level.</li>
-                <li>• Experiment with advanced animations and responsive layouts.</li>
-                <li>• Prepare myself for real-world development & opportunities.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-right">
-          <div class="about-right-label">Snapshot</div>
-          <div class="about-right-title">How I approach learning & work</div>
-          <div class="about-timeline">
-            <div>
-              <span>Learning Style</span>
-              I like to break topics into simple steps, understand the “why”, then write clean, commented code to
-              implement the “how”.
-            </div>
-            <div>
-              <span>Work Quality</span>
-              I try to make even a small mini project look and feel premium — neat layout, smooth hover effects, and
-              clear logic.
-            </div>
-            <div>
-              <span>Innovation</span>
-              I enjoy adding creative touches: animations, gradients, transitions and interactive components that
-              make the experience memorable.
-            </div>
-            <div>
-              <span>Mindset</span>
-              Every bug or error is feedback. I patiently fix issues and learn from them, instead of getting frustrated
-              or giving up.
-            </div>
-          </div>
-          <div style="font-size:0.83rem; color:#e5e7eb; margin-top:1rem;">
-            For my teachers and examiners, this portfolio is also a demonstration of how seriously I take both my
-            academics and my practical skills.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- PROJECTS ---------- -->
-    <section id="projects" class="section-projects reveal">
-      <h2 class="section-title">
-        Projects
-        <span class="section-chip">3D Tilt • Glow • Mini Apps</span>
-      </h2>
-      <p class="section-sub">
-        This section has a more dramatic, green-blue mood with 3D tilt cards and glow effects. Click a card to open the
-        live mini project on the right.
-      </p>
-
-      <div class="projects-wrap">
-        <!-- LEFT: 3D TILT CARDS -->
-        <div class="project-grid">
-          <div class="project-card tilt-card active" data-project="tic-tac-toe">
-            <div class="project-inner">
-              <div class="project-tag">Mini Game</div>
-              <div class="project-title">Tic Tac Toe • Neon Board</div>
-              <div class="project-meta">
-                Classic X vs O with instant winner detection and reset button.
-              </div>
-              <div class="project-footer">
-                <div class="project-chip">Logic • Conditions</div>
-                <div class="project-play">▶ Play</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card tilt-card" data-project="slider">
-            <div class="project-inner">
-              <div class="project-tag">UI Motion</div>
-              <div class="project-title">Luxury Image Slider</div>
-              <div class="project-meta">
-                Simulated images with smooth transitions and arrow navigation.
-              </div>
-              <div class="project-footer">
-                <div class="project-chip">DOM • Animation</div>
-                <div class="project-play">▶ View</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card tilt-card" data-project="calculator">
-            <div class="project-inner">
-              <div class="project-tag">Utility</div>
-              <div class="project-title">Premium Calculator</div>
-              <div class="project-meta">
-                Clean calculator using events, expressions and display updates.
-              </div>
-              <div class="project-footer">
-                <div class="project-chip">Events • Eval</div>
-                <div class="project-play">▶ Use</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card tilt-card" data-project="clock">
-            <div class="project-inner">
-              <div class="project-tag">Real Time</div>
-              <div class="project-title">Digital Clock</div>
-              <div class="project-meta">
-                Live 24-hour clock updated every second with JS.
-              </div>
-              <div class="project-footer">
-                <div class="project-chip">Date • Interval</div>
-                <div class="project-play">▶ Watch</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card tilt-card project-major" data-project="major">
-            <div class="project-inner">
-              <div class="project-tag">Major Project (Placeholder)</div>
-              <div class="project-title">Future Major Project Slot</div>
-              <div class="project-meta">
-                Reserved area where I will integrate my main/major project in the same luxury nature-themed design.
-              </div>
-              <div class="project-footer">
-                <div class="project-chip">To be added by me</div>
-                <div class="project-play">✦ Coming Soon</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- RIGHT: LIVE PROJECT PANEL -->
-        <div class="project-live">
-          <div class="project-live-header">
-            <div>Interactive Playground</div>
-            <div class="project-badges">
-              <div class="project-badge">HTML</div>
-              <div class="project-badge">CSS</div>
-              <div class="project-badge">JavaScript</div>
-            </div>
-          </div>
-
-          <div class="project-panels">
-            <!-- TIC TAC TOE -->
-            <div class="project-panel active" id="panel-tic-tac-toe">
-              <div class="mini-title">Tic Tac Toe • Neon Board</div>
-              <div class="mini-desc">
-                Tap on the grid to place X and O. The game detects wins, draws, and lets you reset instantly.
-              </div>
-
-              <div class="ttt-board" id="tttBoard"></div>
-              <div class="ttt-status" id="tttStatus">Current Player: X</div>
-              <button class="mini-btn" id="tttReset">Reset Game</button>
-            </div>
-
-            <!-- IMAGE SLIDER -->
-            <div class="project-panel" id="panel-slider">
-              <div class="mini-title">Luxury Image Slider</div>
-              <div class="mini-desc">
-                A smooth slider simulating high-end project visuals using gradients and transitions.
-              </div>
-
-              <div class="slider-wrap">
-                <div class="slider-viewport">
-                  <div class="slide slide-1 active" data-index="0">
-                    <div class="slide-title">Study Mode • Focus</div>
-                    <div class="slide-caption">
-                      Late-night sessions turning theory into working projects.
-                    </div>
-                  </div>
-                  <div class="slide slide-2" data-index="1">
-                    <div class="slide-title">Design • Experiments</div>
-                    <div class="slide-caption">
-                      Playing with layouts, gradients and hover effects to keep things premium.
-                    </div>
-                  </div>
-                  <div class="slide slide-3" data-index="2">
-                    <div class="slide-title">Future • Innovation</div>
-                    <div class="slide-caption">
-                      Aiming to build real-world apps with the same attention to detail.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="slider-controls">
-                  <div>Use arrows to change slide.</div>
-                  <div class="slider-buttons">
-                    <button class="slider-btn" id="sliderPrev">←</button>
-                    <button class="slider-btn" id="sliderNext">→</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- CALCULATOR -->
-            <div class="project-panel" id="panel-calculator">
-              <div class="mini-title">Premium Calculator</div>
-              <div class="mini-desc">
-                Demonstrates event handling, dynamic display updates, and basic expression evaluation.
-              </div>
-
-              <div class="calc-shell">
-                <div class="calc-display" id="calcDisplay">0</div>
-                <div class="calc-grid">
-                  <button class="calc-btn operator" data-value="C">C</button>
-                  <button class="calc-btn operator" data-value="(">(</button>
-                  <button class="calc-btn operator" data-value=")">)</button>
-                  <button class="calc-btn operator" data-value="/">÷</button>
-
-                  <button class="calc-btn" data-value="7">7</button>
-                  <button class="calc-btn" data-value="8">8</button>
-                  <button class="calc-btn" data-value="9">9</button>
-                  <button class="calc-btn operator" data-value="*">×</button>
-
-                  <button class="calc-btn" data-value="4">4</button>
-                  <button class="calc-btn" data-value="5">5</button>
-                  <button class="calc-btn" data-value="6">6</button>
-                  <button class="calc-btn operator" data-value="-">−</button>
-
-                  <button class="calc-btn" data-value="1">1</button>
-                  <button class="calc-btn" data-value="2">2</button>
-                  <button class="calc-btn" data-value="3">3</button>
-                  <button class="calc-btn operator" data-value="+">+</button>
-
-                  <button class="calc-btn zero" data-value="0">0</button>
-                  <button class="calc-btn" data-value=".">.</button>
-                  <button class="calc-btn equals" data-value="=">=</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- DIGITAL CLOCK -->
-            <div class="project-panel" id="panel-clock">
-              <div class="mini-title">Digital Clock</div>
-              <div class="mini-desc">
-                Uses JavaScript's Date object and intervals to show the current time in 24-hour format.
-              </div>
-
-              <div class="clock-display" id="digitalClock">00:00:00</div>
-              <div class="clock-note">Time format: HH : MM : SS (24-hour)</div>
-            </div>
-
-            <!-- MAJOR PROJECT PLACEHOLDER -->
-            <div class="project-panel" id="panel-major">
-              <div class="mini-title">Major Project Placeholder</div>
-              <div class="mini-desc">
-                This area is reserved for my main project. I can plug in any large project here later.
-              </div>
-
-              <p style="font-size:0.9rem; color:#e5e7eb; line-height:1.7;">
-                For the exam, I can explain that this section is intentionally left open so I can integrate my major
-                project with the same UI and green-blue theme. I can add my own HTML, CSS, and JavaScript here later to
-                showcase a bigger application or a more advanced idea.
-              </p>
-              <p style="font-size:0.86rem; color:#9ca3af; margin-top:0.8rem;">
-                Technically, I just have to replace this text and insert my major project’s layout and script into this
-                panel (<code>panel-major</code>) to extend the portfolio.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------- CONTACT ---------- -->
-    <section id="contact" class="section-contact reveal">
-      <h2 class="section-title">
-        Contact
-        <span class="section-chip">Soft, minimal & professional</span>
-      </h2>
-      <p class="section-sub">
-        This section uses a softer green tone, different from all other sections, to feel calm and professional.
-      </p>
-
-      <div class="contact-grid">
-        <div>
-          <div class="contact-label">Primary Email</div>
-          <div class="contact-email">jaspreetjassal@gmail.com</div>
-          <div class="contact-note">
-            This email can be used for academic discussions, project collaboration or internship-related communication.
-            I aim to respond professionally and on time, just as I try to submit my work neatly and punctually.
-          </div>
-        </div>
-
-        <div class="contact-card">
-          <form id="contactForm">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                class="input"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                class="input"
-                placeholder="Enter your email"
-                required
-              />
-              <div class="form-helper">
-                This is a demo form – in a real deployment, it would be connected to a backend or email service.
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                class="textarea"
-                placeholder="Write your message here..."
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary" style="width:max-content;">
-              Send Message ✉
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> <span class="accent">Jaspreet Jassal</span>. All rights reserved.
-  </footer>
+    </div>
+  </div>
 
   <script>
-    // ---------- UTIL: Smooth scroll ----------
-    function scrollToSection(id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    /* ============ STARS BACKGROUND ANIMATION ============ */
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let starArray = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
 
-    // ---------- NAV: Mobile ----------
-    const hamburger = document.getElementById("hamburger");
-    const navLinks = document.getElementById("navLinks");
-
-    if (hamburger) {
-      hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("open");
+    for (let i = 0; i < 150; i++) {
+      starArray.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 1 + 0.3,
+        size: Math.random() * 1.5 + 0.5,
       });
     }
 
-    Array.from(navLinks.querySelectorAll("a")).forEach((link) => {
-      link.addEventListener("click", () => navLinks.classList.remove("open"));
-    });
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00eaff";
 
-    // ---------- YEAR ----------
-    document.getElementById("year").textContent = new Date().getFullYear();
+      for (let s of starArray) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fill();
 
-    // ---------- TYPING EFFECT ----------
-    const typeTarget = document.getElementById("typeText");
-    const typingTexts = [
-      "Student who loves clean code.",
-      "Front-end learner exploring UI & UX.",
-      "Focused on growth and innovation.",
-      "Turning exam projects into real projects."
-    ];
-    let typeIndex = 0;
-    let charIndex = 0;
-    let typingForward = true;
-
-    function typeLoop() {
-      const currentText = typingTexts[typeIndex];
-
-      if (typingForward) {
-        charIndex++;
-        if (charIndex > currentText.length) {
-          typingForward = false;
-          setTimeout(typeLoop, 900);
-          typeTarget.textContent = currentText;
-          return;
+        s.y += s.speed;
+        if (s.y > canvas.height) {
+          s.y = 0;
+          s.x = Math.random() * canvas.width;
         }
+      }
+
+      requestAnimationFrame(animateStars);
+    }
+    animateStars();
+
+    /* ============ TYPING EFFECT FOR HERO TEXT ============ */
+    const heroTitle = document.getElementById("heroTitle");
+    const heroSubtitle = document.getElementById("heroSubtitle");
+
+    const titleText = "Hi, I'm Jaspreet Singh";
+    const subtitleText = "IT Student | Web Developer ";
+
+    let titleIndex = 0;
+    let subtitleIndex = 0;
+
+    function typeTitle() {
+      if (titleIndex <= titleText.length) {
+        heroTitle.textContent = titleText.slice(0, titleIndex);
+        titleIndex++;
+        setTimeout(typeTitle, 80);
       } else {
-        charIndex--;
-        if (charIndex === 0) {
-          typingForward = true;
-          typeIndex = (typeIndex + 1) % typingTexts.length;
-        }
-      }
-
-      typeTarget.textContent = currentText.slice(0, charIndex);
-      setTimeout(typeLoop, typingForward ? 65 : 40);
-    }
-
-    typeLoop();
-
-    // ---------- SCROLL REVEAL ----------
-    const revealEls = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    revealEls.forEach((el) => observer.observe(el));
-
-    // ---------- PROJECTS: Card switching ----------
-    const projectCards = document.querySelectorAll(".project-card");
-    const projectPanels = document.querySelectorAll(".project-panel");
-
-    projectCards.forEach((card) => {
-      card.addEventListener("click", () => {
-        const key = card.getAttribute("data-project");
-        if (!key) return;
-
-        projectCards.forEach((c) => c.classList.remove("active"));
-        card.classList.add("active");
-
-        projectPanels.forEach((panel) => {
-          if (panel.id === "panel-" + key) {
-            panel.classList.add("active");
-          } else {
-            panel.classList.remove("active");
-          }
-        });
-      });
-    });
-
-    // ---------- 3D TILT EFFECT ON PROJECT CARDS ----------
-    const tiltCards = document.querySelectorAll(".tilt-card");
-
-    tiltCards.forEach((card) => {
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX = -(y - centerY) / 18;
-        const rotateY = (x - centerX) / 18;
-
-        card.style.transform =
-          "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(1.05)";
-        card.style.boxShadow = "0 28px 60px rgba(0,0,0,1)";
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-        card.style.boxShadow = "0 18px 40px rgba(0,0,0,0.9)";
-      });
-    });
-
-    // ---------- TIC TAC TOE ----------
-    const tttBoardEl = document.getElementById("tttBoard");
-    const tttStatus = document.getElementById("tttStatus");
-    const tttReset = document.getElementById("tttReset");
-
-    const WIN_PATTERNS = [
-      [0, 1, 2], [3, 4, 5], [6, 7, 8],
-      [0, 3, 6], [1, 4, 7], [2, 5, 8],
-      [0, 4, 8], [2, 4, 6]
-    ];
-    let tttState = Array(9).fill("");
-    let tttPlayer = "X";
-    let tttOver = false;
-
-    function initTtt() {
-      tttBoardEl.innerHTML = "";
-      tttState = Array(9).fill("");
-      tttPlayer = "X";
-      tttOver = false;
-      tttStatus.textContent = "Current Player: " + tttPlayer;
-
-      for (let i = 0; i < 9; i++) {
-        const cell = document.createElement("div");
-        cell.className = "ttt-cell";
-        cell.dataset.index = i;
-        cell.addEventListener("click", onTttClick);
-        tttBoardEl.appendChild(cell);
+        setTimeout(typeSubtitle, 300);
       }
     }
 
-    function onTttClick(e) {
-      const index = Number(e.currentTarget.dataset.index);
-      if (tttOver || tttState[index] !== "") return;
-
-      tttState[index] = tttPlayer;
-      e.currentTarget.textContent = tttPlayer;
-
-      if (checkTttWin(tttPlayer)) {
-        tttStatus.textContent = "Player " + tttPlayer + " wins! 🎉";
-        tttOver = true;
-      } else if (tttState.every((c) => c !== "")) {
-        tttStatus.textContent = "It's a draw! 🤝";
-        tttOver = true;
-      } else {
-        tttPlayer = tttPlayer === "X" ? "O" : "X";
-        tttStatus.textContent = "Current Player: " + tttPlayer;
+    function typeSubtitle() {
+      if (subtitleIndex <= subtitleText.length) {
+        heroSubtitle.textContent = subtitleText.slice(0, subtitleIndex);
+        subtitleIndex++;
+        setTimeout(typeSubtitle, 40);
       }
     }
 
-    function checkTttWin(player) {
-      return WIN_PATTERNS.some((pattern) =>
-        pattern.every((index) => tttState[index] === player)
-      );
+    typeTitle();
+
+    /* ============ MODAL FUNCTIONS ============ */
+    function openModal(id) {
+      document.getElementById(id).style.display = "flex";
     }
 
-    tttReset.addEventListener("click", initTtt);
-    initTtt();
-
-    // ---------- IMAGE SLIDER ----------
-    const slides = document.querySelectorAll(".slide");
-    const sliderPrev = document.getElementById("sliderPrev");
-    const sliderNext = document.getElementById("sliderNext");
-    let slideIndex = 0;
-
-    function showSlide(i) {
-      slides.forEach((slide, idx) => {
-        if (idx === i) {
-          slide.classList.add("active");
-        } else {
-          slide.classList.remove("active");
-        }
-      });
+    function closeModal(id) {
+      document.getElementById(id).style.display = "none";
     }
 
-    function nextSlide() {
-      slideIndex = (slideIndex + 1) % slides.length;
-      showSlide(slideIndex);
-    }
-
-    function prevSlide() {
-      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
-      showSlide(slideIndex);
-    }
-
-    if (sliderNext) sliderNext.addEventListener("click", nextSlide);
-    if (sliderPrev) sliderPrev.addEventListener("click", prevSlide);
-
-    setInterval(() => {
-      const sliderPanel = document.getElementById("panel-slider");
-      if (sliderPanel.classList.contains("active")) {
-        nextSlide();
-      }
-    }, 6000);
-
-    // ---------- CALCULATOR ----------
-    const calcDisplay = document.getElementById("calcDisplay");
-    const calcButtons = document.querySelectorAll(".calc-btn");
-    let calcExpr = "";
-
-    function updateCalcDisplay(value) {
-      calcDisplay.textContent = value || "0";
-    }
-
-    function handleCalcInput(value) {
-      if (value === "C") {
-        calcExpr = "";
-        updateCalcDisplay(calcExpr);
-        return;
-      }
-
-      if (value === "=") {
-        try {
-          const result = eval(calcExpr || "0");
-          calcExpr = String(result);
-          updateCalcDisplay(calcExpr);
-        } catch (err) {
-          updateCalcDisplay("Error");
-          calcExpr = "";
-        }
-        return;
-      }
-
-      calcExpr += value;
-      updateCalcDisplay(calcExpr);
-    }
-
-    calcButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const val = btn.getAttribute("data-value");
-        handleCalcInput(val);
-      });
-    });
-
-    // ---------- DIGITAL CLOCK ----------
-    const clockEl = document.getElementById("digitalClock");
-
-    function pad(n) {
-      return n.toString().padStart(2, "0");
-    }
-
+    /* ============ CLOCK LOGIC ============ */
     function updateClock() {
-      const now = new Date();
-      const h = pad(now.getHours());
-      const m = pad(now.getMinutes());
-      const s = pad(now.getSeconds());
-      clockEl.textContent = `${h}:${m}:${s}`;
+      const d = new Date();
+      const h = String(d.getHours()).padStart(2, "0");
+      const m = String(d.getMinutes()).padStart(2, "0");
+      const s = String(d.getSeconds()).padStart(2, "0");
+      document.getElementById("clockDisplay").innerText = `${h}:${m}:${s}`;
     }
-
-    updateClock();
     setInterval(updateClock, 1000);
+    updateClock();
 
-    // ---------- CONTACT FORM ----------
-    const contactForm = document.getElementById("contactForm");
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        alert(
-          "Thank you for reaching out! This is a demo contact form.\nFor this exam portfolio, your message is considered received."
-        );
-        contactForm.reset();
-      });
+    /* ============ ATM LOGIC ============ */
+    let balance = 1000;
+
+    function updateATM(message) {
+      document.getElementById("atmScreen").innerText = `${message}
+Balance: ₹${balance}`;
     }
+
+    function deposit() {
+      balance += 100;
+      updateATM("Deposited ₹100");
+    }
+
+    function withdraw() {
+      if (balance >= 100) {
+        balance -= 100;
+        updateATM("Withdrew ₹100");
+      } else {
+        updateATM("Insufficient Balance");
+      }
+    }
+
+    function checkBalance() {
+      updateATM("Checked Balance");
+    }
+
+    function resetATM() {
+      balance = 1000;
+      updateATM("Balance Reset");
+    }
+
+    /* ============ CALCULATOR LOGIC ============ */
+    let calcValue = "";
+    const calcDisplay = document.getElementById("calcDisplay");
+
+    function appendCalc(v) {
+      calcValue += v;
+      calcDisplay.innerText = calcValue;
+    }
+
+    function clearCalc() {
+      calcValue = "";
+      calcDisplay.innerText = "0";
+    }
+
+    function delChar() {
+      calcValue = calcValue.slice(0, -1);
+      calcDisplay.innerText = calcValue || "0";
+    }
+
+    function calculateCalc() {
+      try {
+        const result = eval(calcValue || "0");
+        calcValue = result.toString();
+        calcDisplay.innerText = calcValue;
+      } catch (e) {
+        calcDisplay.innerText = "Error";
+        calcValue = "";
+      }
+    }
+
+    /* ============ CONTACT FORM (FAKE SEND) ============ */
+    const contactForm = document.getElementById("contactForm");
+    const thankText = document.getElementById("thankText");
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      contactForm.reset();
+      thankText.style.display = "block";
+      setTimeout(() => {
+        thankText.style.display = "none";
+      }, 3000);
+    });
+    // ===== NAV ACTIVE LINK GLOW =====
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 120;
+    if (pageYOffset >= sectionTop) current = section.getAttribute("id");
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) {
+      link.classList.add("active");
+    }
+  });
+});
+
+
   </script>
 </body>
 </html>
