@@ -101,7 +101,7 @@
 
     .section {
       min-height: 90vh;
-      padding-top: 30px;
+      padding-top: 190px;
     }
 
     .section-title {
@@ -928,38 +928,26 @@
     </div>
   </section>
  <!-- PROJECTS SECTION -->
-   <section id="projects" class="section">
-  <h2 class="section-title">My Projects</h2>
-
-  <div style="text-align:center;max-width:700px;margin:0 auto 30px auto;color:#cbd5f5;line-height:1.8;">
-    I believe in learning by building.  
-    Each of these projects helped me understand new logic and UI techniques.  
-    Click on any project below to explore its functionality.
-  </div>
-
-  <div class="projects-upgraded">
-    <div class="project-card-up">
-      <div class="project-glow"></div>
-      <h3>🕒 Digital Clock</h3>
-      <p>A real-time digital clock built using JavaScript's <code>Date()</code> object.</p>
-      <button class="project-btn" onclick="openModal('clockModal')">Open Clock</button>
-    </div>
-
-    <div class="project-card-up">
-      <div class="project-glow"></div>
-      <h3>💳 ATM Simulator</h3>
-      <p>A mini banking simulation that performs deposit, withdraw & balance check.</p>
-      <button class="project-btn" onclick="openModal('atmModal')">Open ATM</button>
-    </div>
-
-    <div class="project-card-up">
-      <div class="project-glow"></div>
-      <h3>🧮 Calculator</h3>
-      <p>A lightweight calculator to perform all basic math operations.</p>
-      <button class="project-btn" onclick="openModal('calcModal')">Open Calculator</button>
-    </div>
-  </div>
-</section>
+      <section id="projects" class="section">
+      <h2 class="section-title">My Projects</h2>
+      <div class="projects-upgraded">
+        <div class="project-card-up">
+          <h3>🕒 Digital Clock</h3>
+          <p>Live time using JavaScript.</p>
+          <button class="project-btn" onclick="openModal('clockModal')">Open Clock</button>
+        </div>
+        <div class="project-card-up">
+          <h3>💳 ATM Simulator</h3>
+          <p>Deposit, withdraw & check balance.</p>
+          <button class="project-btn" onclick="openModal('atmModal')">Open ATM</button>
+        </div>
+        <div class="project-card-up">
+          <h3>🧮 Calculator</h3>
+          <p>Perform basic math operations.</p>
+          <button class="project-btn" onclick="openModal('calcModal')">Open Calculator</button>
+        </div>
+      </div>
+    </section>
 
     <!-- CONTACT SECTION -->
    <section id="contact" class="section">
@@ -997,7 +985,18 @@
     </form>
   </div>
 </section>
-<!-- ATM MODAL -->
+<!-- CLOCK MODAL -->
+  <div id="clockModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="modal-title">Digital Clock</span>
+        <span class="modal-close" onclick="closeModal('clockModal')">×</span>
+      </div>
+      <div id="clockDisplay">00:00:00</div>
+    </div>
+  </div>
+
+  <!-- ATM MODAL -->
   <div id="atmModal" class="modal">
     <div class="modal-box">
       <div class="modal-header">
@@ -1028,29 +1027,24 @@ Balance: ₹1000</div>
         <button class="calc-button" onclick="delChar()">⌫</button>
         <button class="calc-button" onclick="appendCalc('%')">%</button>
         <button class="calc-button" onclick="appendCalc('/')">÷</button>
-
         <button class="calc-button" onclick="appendCalc('7')">7</button>
         <button class="calc-button" onclick="appendCalc('8')">8</button>
         <button class="calc-button" onclick="appendCalc('9')">9</button>
         <button class="calc-button" onclick="appendCalc('*')">×</button>
-
         <button class="calc-button" onclick="appendCalc('4')">4</button>
         <button class="calc-button" onclick="appendCalc('5')">5</button>
         <button class="calc-button" onclick="appendCalc('6')">6</button>
         <button class="calc-button" onclick="appendCalc('-')">−</button>
-
         <button class="calc-button" onclick="appendCalc('1')">1</button>
         <button class="calc-button" onclick="appendCalc('2')">2</button>
         <button class="calc-button" onclick="appendCalc('3')">3</button>
         <button class="calc-button" onclick="appendCalc('+')">+</button>
-
         <button class="calc-button" onclick="appendCalc('0')">0</button>
         <button class="calc-button" onclick="appendCalc('.')">.</button>
         <button class="calc-button" onclick="calculateCalc()">=</button>
       </div>
     </div>
   </div>
-
   <script>
     /* ============ STARS BACKGROUND ANIMATION ============ */
     const canvas = document.getElementById("stars");
@@ -1234,8 +1228,6 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-
-
   </script>
 </body>
 </html>
