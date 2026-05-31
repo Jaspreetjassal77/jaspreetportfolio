@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Syne", sans-serif;
+  --font-body: "Manrope", sans-serif;
+  --emerald: #13f29a;
+  --gold: #e9c46a;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  background: #04060a;
+  color: #eaf6ef;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--emerald);
+  color: #04060a;
+}
+
+/* Fixed WebGL stage behind the scrolling content */
+.webgl-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+@layer components {
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.02)
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  }
+
+  .glass-emerald {
+    border: 1px solid rgba(19, 242, 154, 0.28);
+    box-shadow: 0 0 40px rgba(19, 242, 154, 0.12),
+      inset 0 0 30px rgba(19, 242, 154, 0.05);
+  }
+
+  .text-emerald-glow {
+    color: var(--emerald);
+    text-shadow: 0 0 24px rgba(19, 242, 154, 0.55);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(90deg, #f6e3a8, #e9c46a, #b8902f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .emerald-gold-gradient {
+    background: linear-gradient(100deg, #eaf6ef 0%, #13f29a 45%, #e9c46a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .section-shell {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 1.5rem;
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--emerald);
+  }
+
+  .pill {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 9999px;
+    padding: 0.45rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+.heading-xl {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+/* thin custom scrollbar */
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lenis.lenis-smooth {
+    scroll-behavior: smooth !important;
+  }
+}
